@@ -1,0 +1,11 @@
+<ul class="collection with-header">
+  <li class="collection-header"><h4>Images</h4></li>
+  <li class="collection-item"><a href="images/add">Add instance template</a></li>
+  <li class="collection-item" ng-repeat="image in images">
+    <div>
+      <span ng-bind="image.$payload.name"></span>
+      <a href="/instances/remove/{{image.$payload.name}}" class="secondary-content"><i class="material-icons">highlight_off</i></a>
+      <a href="/instances/add/{{image.$payload.name}}" class="secondary-content"><i class="material-icons">power_settings_new</i></a>      
+    </div>
+  </li>
+</ul>

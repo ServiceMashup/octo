@@ -1,0 +1,5 @@
+{
+    "name": "ShipyardContainers",
+    "taskScript": "task\n .json({\n \turl: 'http://46.101.191.124:8080',\n    headers: {\n    \t'X-Service-Key': 'pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii'\n    },    \n })\n .get('/api/containers')\n .then(function(data){\n\ttask.done(null, data);\n });",
+    "anonymous": true
+}

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col s12">
+    <h4>Deploy an image</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col s8">
+    <select class="browser-default" ng-model="selectedImage" ng-options="item as item.name for item in images track by item.name" ng-change="loadImageVersions(selectedImage)">
+     <option value="">select image</option>
+    </select>
+  </div>
+  <div class="col s4">
+    <select class="browser-default" ng-model="selectedImage.version" ng-options="item as item for item in versions">
+     <option value="">select version</option>
+    </select>
+  </div>  
+</div>
+<div class="row">
+  <ul class="collection">
+    <li class="collection-item" ng-repeat="container in containers | filter: selectedImage.name">
+      <div>
+        <span ng-bind="container.engine.id"></span>-
+        <span ng-bind="container.image.name"></span>
+        <a href="" class="secondary-content"><i class="material-icons">highlight_off</i></a>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col s6">
+    <input type="text" placeholder="cpu" ng-model="selectedImage.cpu" />
+  </div>
+  <div class="col s6">
+    <input type="text" placeholder="memory" ng-model="selectedImage.memory"/>
+  </div>  
+</div>
+<div class="row">
+  <div class="col s12">
+    <input type="text" placeholder="environment variables" ng-model="selectedImage.envvars"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col s2">
+    <a href="/" class="waves-effect waves-light btn">Cancel</a>
+  </div>
+  <div class="col s2">
+    <a href="" class="waves-effect waves-light btn" ng-click="addImage(imageName)">Deploy</a>
+  </div>
+</div>

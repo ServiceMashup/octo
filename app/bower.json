@@ -1,0 +1,21 @@
+{
+  "name": "subkit-octo",
+  "version": "0.0.1",
+  "authors": [
+    "Mike Bild <mike@mikebild.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.97.0",
+    "lc-sdk-angular.js": "~0.0.2",
+    "subkit": "~1.1.24",
+    "angular-route": "~1.4.2"
+  }
+}

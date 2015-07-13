@@ -1,0 +1,5 @@
+{
+    "name": "DockerRegistryImageVersions",
+    "taskScript": "task\n .json({url: 'http://46.101.191.124:5000'})\n .get('/v2/'+task.params.service+'/tags/list')\n .then(function(data){\n\ttask.done(null, data.tags);\n });",
+    "anonymous": true
+}

@@ -1,0 +1,48 @@
+{
+    "/dashboard": {
+        "GET": [
+            "anonymous"
+        ],
+        "POST": [],
+        "PUT": [],
+        "DELETE": []
+    },
+    "/api/DockerRegistryImageVersions": {
+        "GET": [
+            "anonymous"
+        ],
+        "POST": [
+            "anonymous"
+        ],
+        "PUT": [
+            "anonymous"
+        ],
+        "DELETE": []
+    },
+    "/api/ShipyardContainers": {
+        "GET": [
+            "anonymous"
+        ],
+        "POST": [
+            "anonymous"
+        ],
+        "PUT": [
+            "anonymous"
+        ],
+        "DELETE": []
+    },
+    "/stores/images": {
+        "GET": [
+            "anonymous"
+        ],
+        "POST": [
+            "anonymous"
+        ],
+        "PUT": [
+            "anonymous"
+        ],
+        "DELETE": [
+            "anonymous"
+        ]
+    }
+}
