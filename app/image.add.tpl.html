@@ -14,16 +14,19 @@
   </div>
 </div>
 <div class="row">
-  <div class="col s6">
-    <input type="text" ng-model="template.cpu" placeholder="cpu"/>
+  <div class="col s4">
+    <input type="text" placeholder="port" ng-model="template.port" />
   </div>
-  <div class="col s6">
-    <input type="text" ng-model="template.memory" placeholder="memory"/>
+  <div class="col s4">
+    <input type="text" placeholder="memory" ng-model="template.memory"/>
+  </div>
+  <div class="col s4">
+    <input type="text" placeholder="cpu" ng-model="template.cpu" />
   </div>  
 </div>
 <div class="row">
   <div class="col s12">
-    <input type="text" ng-model="template.envvars" placeholder="environment variables (space separated)" />
+    <input type="text" ng-model="template.envvars" placeholder="environment variables (key=value space separated)" />
   </div>
 </div>
 <div class="row">

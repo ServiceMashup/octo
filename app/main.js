@@ -37,6 +37,7 @@
       $scope.containers = [];
       $scope.selectedImage = {};
       $scope.loadImageVersions = loadImageVersions;
+      $scope.deployImage = deployImage;
 
       http
         .get('service-template', '/stores/images')
@@ -69,7 +70,32 @@
           .get('service-template', '/api/ShipyardContainers')
           .then(function(result){
             $scope.containers = result.data;
-            console.log($scope.containers)
+          });
+      }
+
+      function deployImage(image){
+        var environment = image.envvars.split(' ').reduce(function(s,e){
+          var keyValue = e.split('=');
+          s[keyValue[0]] = keyValue[1];
+          return s;
+        },{});
+
+        var config = {
+          name: image.name,
+          version: image.version,
+          cpu: parseFloat(image.cpu),
+          memory: parseInt(image.memory),
+          port: parseInt(image.port),
+          hostname: image.hostname || '',
+          domain: image.domain || '',
+          labels: [],
+          environment: environment || {}
+        };
+
+        http
+          .post('service-template', '/api/ShipyardContainers', config)
+          .then(function(result){
+            console.log(result)
           });
       }
 

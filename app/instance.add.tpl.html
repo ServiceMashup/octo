@@ -27,16 +27,19 @@
   </ul>
 </div>
 <div class="row">
-  <div class="col s6">
-    <input type="text" placeholder="cpu" ng-model="selectedImage.cpu" />
+  <div class="col s4">
+    <input type="text" placeholder="port" ng-model="selectedImage.port" />
   </div>
-  <div class="col s6">
+  <div class="col s4">
     <input type="text" placeholder="memory" ng-model="selectedImage.memory"/>
+  </div>
+  <div class="col s4">
+    <input type="text" placeholder="cpu" ng-model="selectedImage.cpu" />
   </div>  
 </div>
 <div class="row">
   <div class="col s12">
-    <input type="text" placeholder="environment variables" ng-model="selectedImage.envvars"/>
+    <input type="text" placeholder="environment variables (key=value space separated)" ng-model="selectedImage.envvars"/>
   </div>
 </div>
 <div class="row">
@@ -44,6 +47,6 @@
     <a href="/" class="waves-effect waves-light btn">Cancel</a>
   </div>
   <div class="col s2">
-    <a href="" class="waves-effect waves-light btn" ng-click="addImage(imageName)">Deploy</a>
+    <a href="" class="waves-effect waves-light btn" ng-click="deployImage(selectedImage)">Deploy</a>
   </div>
 </div>
