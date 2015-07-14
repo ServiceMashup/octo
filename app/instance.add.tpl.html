@@ -21,7 +21,7 @@
       <div>
         <span ng-bind="container.engine.id"></span>-
         <span ng-bind="container.image.name"></span>
-        <a href="" class="secondary-content"><i class="material-icons">highlight_off</i></a>
+        <a href="" class="secondary-content" ng-click="destroyContainer(container)"><i class="material-icons">highlight_off</i></a>
       </div>
     </li>
   </ul>

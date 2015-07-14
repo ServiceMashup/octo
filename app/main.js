@@ -30,6 +30,9 @@
     .controller('InstancesCtrl', function($scope, $location, $routeParams, lcServiceClient){
       var http = lcServiceClient({ 
         discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
+        services: {
+          'service-template': ['localhost:8080']
+        },
         servicesRefreshInterval: 30000
       });
 
@@ -38,35 +41,42 @@
       $scope.selectedImage = {};
       $scope.loadImageVersions = loadImageVersions;
       $scope.deployImage = deployImage;
+      $scope.destroyContainer = destroyContainer;
+      
+      loadContainers();
+      loadImages();
+      loadImage($routeParams.name)
 
-      http
-        .get('service-template', '/stores/images')
-        .then(function(result){
-          $scope.images = result.data.results.map(function(itm){
-            return itm.$payload;
+      function loadImages(){
+        return http
+          .get('service-template', '/stores/images')
+          .then(function(result){
+            $scope.images = result.data.results.map(function(itm){
+              return itm.$payload;
+            });
           });
-        });
+      }
 
-      http
-        .get('service-template', '/stores/images/' + $routeParams.name)
-        .then(function(result){
-          $scope.selectedImage = result.data.$payload;
-          return result.data.$payload;
-        })
-        .then(loadImageVersions);
+      function loadImage(imageName){
+        return http
+          .get('service-template', '/stores/images/' + imageName)
+          .then(function(result){
+            $scope.selectedImage = result.data.$payload;
+            return result.data.$payload;
+          })
+          .then(loadImageVersions);        
+      }
 
       function loadImageVersions(image){
-        http
+        return http
           .get('service-template', '/api/DockerRegistryImageVersions?service=' + image.name)
           .then(function(result){
             $scope.versions = result.data.sort();
           });
       }
       
-      loadContainers();
-
       function loadContainers(){
-        http
+        return http
           .get('service-template', '/api/ShipyardContainers')
           .then(function(result){
             $scope.containers = result.data;
@@ -92,11 +102,18 @@
           environment: environment || {}
         };
 
-        http
+        return http
           .post('service-template', '/api/ShipyardContainers', config)
           .then(function(result){
             console.log(result)
           });
+      }
+// ShipyardContainers
+      function destroyContainer(image){
+        console.log(image)
+        return http
+          .delete('service-template', '/api/ShipyardContainers/' + image.id)
+          .then(loadContainers);
       }
 
     })
@@ -104,6 +121,9 @@
 
       var http = lcServiceClient({ 
         discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
+        services: {
+          'service-template': ['localhost:8080']
+        },        
         servicesRefreshInterval: 30000
       });
 
