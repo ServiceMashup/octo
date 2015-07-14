@@ -1,5 +1,3 @@
-task.debug(task.params);
-
 var options = {
   url: 'http://46.101.191.124:8080',
   headers: { 'X-Service-Key': 'pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii' }
@@ -11,6 +9,7 @@ function Containers(){
 
   this.get = read;
   this.post = create;
+  this.delete = remove;
   
   function create(){
   
@@ -47,6 +46,18 @@ function Containers(){
   function read(){
     return task.json(options)
      .get('/api/containers')
+     .then(function(data){
+        task.done(null, data);
+     })
+     .catch(function(error){
+     	task.done(error);
+     });
+  }
+  
+  function remove(){
+  
+    return task.json(options)
+     .del('/api/containers/'+task.params[1])
      .then(function(data){
         task.done(null, data);
      })

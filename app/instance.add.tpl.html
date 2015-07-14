@@ -19,8 +19,11 @@
   <ul class="collection">
     <li class="collection-item" ng-repeat="container in containers | filter: selectedImage.name">
       <div>
+        <span ng-bind="container.image.hostname"></span>-
+        <span ng-bind="container.image.domain"></span>-
         <span ng-bind="container.engine.id"></span>-
-        <span ng-bind="container.image.name"></span>
+        <span ng-bind="container.ports[0].port"></span>-
+        <span ng-bind="container.state"></span>
         <a href="" class="secondary-content" ng-click="destroyContainer(container)"><i class="material-icons">highlight_off</i></a>
       </div>
     </li>
