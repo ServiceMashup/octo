@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "materialize": "~0.97.0",
-    "lc-sdk-angular.js": "~0.0.2",
+    "lc-sdk-angular.js": "~0.0.4",
     "subkit": "~1.1.24",
     "angular-route": "~1.4.2"
   }

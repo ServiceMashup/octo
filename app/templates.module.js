@@ -5,16 +5,14 @@
     .module('templates',['lcSDK', 'versions'])
     .service('TemplatesService', function($q, lcServiceClient){
       var http = lcServiceClient({ 
-        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
-        services: {
-          'service-template': ['localhost:8080']
-        },        
+        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500']
       });
 
       return {
         load: load,
         find: find,
-        create: create
+        create: create,
+        remove: remove
       };
 
       function load(name){
@@ -40,6 +38,13 @@
 
         return http.post('service-template', '/stores/images/' + template.name, template);
       }
+
+      function remove(template){
+        if(!template || !template.name) return $q.reject(new Error('Template name is missing'));
+
+        return http.delete('service-template', '/stores/images/' + template.name);
+      }
+
     })
     .controller('TemplatesCtrl', function($scope, $location, TemplatesService, VersionsService){
       $scope.versions = [];
@@ -50,7 +55,7 @@
         TemplatesService
           .create(template)
           .then(function(result){
-            $location.path('/');
+            $location.path('/main');
           })
           .then(function(result){
             Materialize.toast('Created', 4000);
@@ -70,6 +75,7 @@
             Materialize.toast(error.message, 4000);
           });
       }
+
     });
 
 }(angular));    

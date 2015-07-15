@@ -5,10 +5,7 @@
     .module('versions',['lcSDK'])
     .service('VersionsService', function($q, lcServiceClient){
       var http = lcServiceClient({ 
-        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
-        services: {
-          'service-template': ['localhost:8080']
-        },        
+        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500']
       });
 
       return {
