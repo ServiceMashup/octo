@@ -1,0 +1,15 @@
+{
+  "name": "octo",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ServiceMashup/octo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ServiceMashup/octo/issues"
+  },
+  "homepage": "https://github.com/ServiceMashup/octo"
+}
