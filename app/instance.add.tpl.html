@@ -1,55 +1,87 @@
-<div class="row">
-  <div class="col s12">
-    <h4>Deploy an image</h4>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h4>Deploy an image</h4>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col s8">
-    <select class="browser-default" ng-model="selectedImage" ng-options="item as item.name for item in images track by item.name" ng-change="loadImageVersions(selectedImage)">
-     <option value="">select image</option>
-    </select>
-  </div>
-  <div class="col s4">
-    <select class="browser-default" ng-model="selectedImage.version" ng-options="item as item for item in versions">
-     <option value="">select version</option>
-    </select>
+  <div class="row">
+    <div class="col s12">
+      <h5>choose a template for deployment</h5>  
+    </div>
   </div>  
-</div>
-<div class="row">
-  <ul class="collection">
-    <li class="collection-item" ng-repeat="container in containers | filter: selectedImage.name">
-      <div>
-        <span ng-bind="container.image.hostname"></span> -
-        <span ng-bind="container.image.domain"></span> -
-        <span ng-bind="container.engine.id"></span> -
-        <span ng-bind="container.ports[0].port"></span> -
-        <span ng-bind="container.state"></span>
-        <a href="" class="secondary-content" ng-click="destroyContainer(container)"><i class="material-icons">highlight_off</i></a>
-      </div>
-    </li>
-  </ul>
-</div>
-<div class="row">
-  <div class="col s4">
-    <input type="text" placeholder="port" ng-model="selectedImage.port" />
+  <div class="row">
+    <div class="col s8">
+      <select class="browser-default" ng-model="selectedImage" ng-options="item as item.name for item in images track by item.name" ng-change="loadImageVersions(selectedImage)">
+       <option value="">select image</option>
+      </select>
+    </div>
+    <div class="col s4">
+      <select class="browser-default" ng-model="selectedImage.version" ng-options="item as item for item in versions">
+       <option value="">select version</option>
+      </select>
+    </div>  
   </div>
-  <div class="col s4">
-    <input type="text" placeholder="memory" ng-model="selectedImage.memory"/>
+  <div class="row">
+    <div class="col s12">
+      <h5>available instances</h5>      
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Hostname</th>
+            <th>Domain</th>
+            <th>Id</th>
+            <th>Port</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="container in containers | filter: selectedImage.name | orderBy: 'selectedImage.port'">
+            <td ng-bind="container.image.hostname"></td>
+            <td ng-bind="container.image.domain"></td>
+            <td ng-bind="container.engine.id"></td>
+            <td ng-bind="container.ports[0].port"></td>
+            <td ng-bind="container.state"></td>
+            <td><a href="" class="secondary-content" ng-click="destroyContainer(container)"><i class="material-icons">highlight_off</i></a></td>
+          </tr>
+        </tbody>
+      </table>
+     </div>
   </div>
-  <div class="col s4">
-    <input type="text" placeholder="cpu" ng-model="selectedImage.cpu" />
-  </div>  
-</div>
-<div class="row">
-  <div class="col s12">
-    <input type="text" placeholder="environment variables (key=value space separated)" ng-model="selectedImage.envvars"/>
+  <div class="row">
+    <div class="col s12">
+      <h5>instance configuration parameters</h5>  
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col s2">
-    <a href="/main" class="waves-effect waves-light btn">Cancel</a>
+  <div class="row">
+    <div class="col s4">
+      <input type="text" placeholder="port" ng-model="selectedImage.port" />
+    </div>
+    <div class="col s4">
+      <input type="text" placeholder="memory" ng-model="selectedImage.memory"/>
+    </div>
+    <div class="col s4">
+      <input type="text" placeholder="cpu" ng-model="selectedImage.cpu" />
+    </div>  
   </div>
-  <div class="col s2">
-    <a href="" class="waves-effect waves-light btn" ng-click="deployImage(selectedImage)">Deploy</a>
+  <div class="row">
+    <div class="col s12">
+      <input type="text" placeholder="environment variables (key=value space separated)" ng-model="selectedImage.envvars"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <input type="text" placeholder="hostname" ng-model="selectedImage.hostname" />
+    </div>
+    <div class="col s6">
+      <input type="text" placeholder="domain" ng-model="selectedImage.domain"/>
+    </div>  
+  </div>   
+  <div class="row">
+    <div class="col s2">
+      <a href="/main" class="waves-effect waves-light btn">Cancel</a>
+    </div>
+    <div class="col s2">
+      <a href="" class="waves-effect waves-light btn" ng-click="deployImage(selectedImage)">Deploy</a>
+    </div>
   </div>
 </div>

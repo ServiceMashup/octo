@@ -5,7 +5,8 @@
     .module('instances',['lcSDK', 'versions', 'templates'])
     .service('InstancesService', function($q, lcServiceClient){
       var http = lcServiceClient({ 
-        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500']
+        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
+        timeout: 5000
       });
 
       return {
@@ -124,10 +125,10 @@
         return InstancesService
           .create(config)
           .then(function(result){
-            Materialize.toast('Created', 4000);
-            $location.path('/main');
+            Materialize.toast('Created', 4000);            
           })
-          .catch(function(error){
+          .then(loadContainers)
+          .catch(function(error){            
             Materialize.toast(error.data.message, 4000);
           });
       }
@@ -137,7 +138,6 @@
           .remove(image.id)
           .then(function(result){
             Materialize.toast('Removed', 4000);
-            $location.path('/main');
           })          
           .then(loadContainers)
           .catch(function(error){

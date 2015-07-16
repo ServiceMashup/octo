@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h4>Create a new deployment template</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s8">
+      <input type="text" ng-model="template.name" placeholder="enter image name" ng-blur="loadImageVersions(template.name)" />
+    </div>
+    <div class="col s4">
+      <select class="browser-default" ng-model="template.version" ng-options="item as item for item in versions">
+       <option value="">select version</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s4">
+      <input type="text" placeholder="port" ng-model="template.port" />
+    </div>
+    <div class="col s4">
+      <input type="text" placeholder="memory" ng-model="template.memory"/>
+    </div>
+    <div class="col s4">
+      <input type="text" placeholder="cpu" ng-model="template.cpu" />
+    </div>  
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <input type="text" ng-model="template.envvars" placeholder="environment variables (key=value space separated)" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <input type="text" placeholder="hostname" ng-model="template.hostname" />
+    </div>
+    <div class="col s6">
+      <input type="text" placeholder="domain" ng-model="template.domain"/>
+    </div>  
+  </div>  
+  <div class="row">
+    <div class="col s6">
+      <a href="/main" class="waves-effect waves-light btn">Cancel</a>
+    </div>
+    <div class="col s6">
+      <a href="" class="waves-effect waves-light btn" ng-click="createTemplate(template)">Add</a>
+    </div>
+  </div>
+</div>

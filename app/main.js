@@ -14,7 +14,7 @@
           controller: 'MainCtrl'
         })
         .when('/templates/add', {
-          templateUrl: 'image.add.tpl.html',
+          templateUrl: 'template.add.tpl.html',
           controller: 'TemplatesCtrl'
         })
         .when('/instances/add/:name', {
@@ -29,7 +29,8 @@
     })
     .controller('AuthCtrl', function($scope, $location, lcServiceClient){
       var http = lcServiceClient({ 
-        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500']
+        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
+        timeout: 5000
       });
 
       $scope.logon = logon;

@@ -17,7 +17,9 @@
         "PUT": [
             "anonymous"
         ],
-        "DELETE": []
+        "DELETE": [
+            "anonymous"
+        ]
     },
     "/api/ShipyardContainers": {
         "GET": [
@@ -29,7 +31,9 @@
         "PUT": [
             "anonymous"
         ],
-        "DELETE": []
+        "DELETE": [
+            "anonymous"
+        ]
     },
     "/stores/images": {
         "GET": [

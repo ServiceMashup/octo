@@ -5,7 +5,8 @@
     .module('templates',['lcSDK', 'versions'])
     .service('TemplatesService', function($q, lcServiceClient){
       var http = lcServiceClient({ 
-        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500']
+        discoveryServers: ['http://46.101.191.124:8500','http://46.101.138.192:8500'],
+        timeout: 5000
       });
 
       return {
