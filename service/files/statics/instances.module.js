@@ -17,7 +17,7 @@
 
       function find(){
         return http
-          .get('service-template', '/api/ShipyardContainers')
+          .get('octo-service', '/api/ShipyardContainers')
           .then(function(result){
             return result.data;
           });
@@ -27,7 +27,7 @@
         if(!value || !value.name || !value.version) return $q.reject(new Error('Instance config is invalid'));
 
         return http
-          .post('service-template', '/api/ShipyardContainers', value)
+          .post('octo-service', '/api/ShipyardContainers', value)
           .then(function(result){
             return result.data;
           });
@@ -37,7 +37,7 @@
         if(!value) return $q.reject(new Error('Instance ID is missing'));
         
         return http
-          .delete('service-template', '/api/ShipyardContainers/' + value)
+          .delete('octo-service', '/api/ShipyardContainers/' + value)
           .then(function(result){
             return result.data;
           });

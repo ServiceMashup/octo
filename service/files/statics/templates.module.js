@@ -18,7 +18,7 @@
 
       function load(name){
         return http
-          .get('service-template', '/stores/images/' + name)
+          .get('octo-service', '/stores/images/' + name)
           .then(function(result){
             return result.data.$payload;
           });
@@ -26,7 +26,7 @@
 
       function find(){
         return http
-          .get('service-template', '/stores/images')
+          .get('octo-service', '/stores/images')
           .then(function(result){
             return result.data.results.map(function(itm){
               return itm.$payload;
@@ -37,13 +37,13 @@
       function create(template){
         if(!template || !template.name) return $q.reject(new Error('Template name is missing'));
 
-        return http.post('service-template', '/stores/images/' + template.name, template);
+        return http.post('octo-service', '/stores/images/' + template.name, template);
       }
 
       function remove(template){
         if(!template || !template.name) return $q.reject(new Error('Template name is missing'));
 
-        return http.delete('service-template', '/stores/images/' + template.name);
+        return http.delete('octo-service', '/stores/images/' + template.name);
       }
 
     })

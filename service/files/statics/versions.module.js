@@ -15,7 +15,7 @@
       function load(name){
         if(!name) return $q.reject(new Error('Service name is missing'));
         return http
-          .get('service-template', '/api/DockerRegistryImageVersions?service=' + name)
+          .get('octo-service', '/api/DockerRegistryImageVersions?service=' + name)
           .then(function(result){
             return result.data.sort();
           });

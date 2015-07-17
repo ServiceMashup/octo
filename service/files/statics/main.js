@@ -39,7 +39,7 @@
         }
         
         return http
-          .post('service-template', '/manage/login', null, account.username, account.password)
+          .post('octo-service', '/manage/login', null, account.username, account.password)
           .then(function(){
             $location.path('/main');
           })

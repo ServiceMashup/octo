@@ -48,5 +48,13 @@
         "DELETE": [
             "anonymous"
         ]
-    }
+    },
+    "/files": {
+        "GET": [
+            "anonymous"
+        ],
+        "POST": [],
+        "PUT": [],
+        "DELETE": []
+    }    
 }
