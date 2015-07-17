@@ -3,7 +3,7 @@
 
   angular
     .module('app',['ngRoute', 'lcSDK', 'versions', 'templates', 'instances'])
-    .config(function ($routeProvider, $locationProvider) {
+    .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
           templateUrl: 'logon.tpl.html',
@@ -24,8 +24,6 @@
         .otherwise({
           redirectTo: '/'
         });
-
-      $locationProvider.html5Mode(true);
     })
     .controller('AuthCtrl', function($scope, $location, lcServiceClient){
       var http = lcServiceClient({ 
